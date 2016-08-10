@@ -5,7 +5,7 @@ package models
 import  (
     "github.com/astaxie/beego/orm"
     _ "github.com/go-sql-driver/mysql" // import your used driver
-    "api_project/models/user"
+    "Gin_API_Framework/models/user"
     "fmt"
 )
     

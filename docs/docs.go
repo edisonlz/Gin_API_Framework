@@ -5,7 +5,7 @@ import (
     "strings"
 
     "github.com/astaxie/beego"
-    "api_project/docs/swagger"
+    "Gin_API_Framework/docs/swagger"
 )
 
 const (

@@ -11,7 +11,7 @@ package routers
 import (
     _ "github.com/astaxie/beego"
     "github.com/gin-gonic/gin"
-    "api_project/controllers"
+    "Gin_API_Framework/controllers"
     "net/http"
     "path"
     "runtime"

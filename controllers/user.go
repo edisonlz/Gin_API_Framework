@@ -5,8 +5,8 @@ import (
     "github.com/gin-gonic/gin"
     "net/http"
     "fmt"
-    "api_project/controllers/msg_struct"
-    "api_project/models/user"
+    "Gin_API_Framework/controllers/msg_struct"
+    "Gin_API_Framework/models/user"
     "strconv"
     _ "github.com/astaxie/beego"
     _ "io/ioutil"
@@ -117,10 +117,11 @@ func UserQueryByIdHandler(c *gin.Context) {
 // @Title User List
 // @API_GROUP User
 // @Description 查询用户列表接口
+// @Param   page     query   int true       "page"
 // @Success 200 {object} 
 // @Failure 400 no enough input
 // @Failure 500 get  common error
-// @router /user/create [get]
+// @router /user/list [get]
 func UserListHandler(c *gin.Context) {
     users := user.UserList()
 

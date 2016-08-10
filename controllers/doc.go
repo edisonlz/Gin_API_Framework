@@ -10,7 +10,7 @@ import (
     _ "path"
     _ "runtime"
     "encoding/json"
-    "api_project/utils"
+    "Gin_API_Framework/utils"
     "io/ioutil"
     "path"
 )

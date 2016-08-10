@@ -8,9 +8,9 @@ import (
     "os"
 
     _ "github.com/gin-gonic/gin"
-    "api_project/routers"
-    _ "api_project/models"
-    _ "api_project/docs"
+    "Gin_API_Framework/routers"
+    _ "Gin_API_Framework/models"
+    _ "Gin_API_Framework/docs"
     //"api_project/controllers"
     _ "github.com/astaxie/beego"
 )

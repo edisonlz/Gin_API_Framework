@@ -6,7 +6,7 @@ package docs
 
 
 import (
-    "api_project/docs/swagger"
+    "Gin_API_Framework/docs/swagger"
 )
 
 type APIDoc struct {

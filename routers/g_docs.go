@@ -32,9 +32,9 @@ import (
     "unicode"
     "crypto/md5"
     "encoding/hex"
-    "api_project/docs"
+    "Gin_API_Framework/docs"
 
-    "api_project/docs/swagger"
+    "Gin_API_Framework/docs/swagger"
     "github.com/astaxie/beego/utils"
 )
 
@@ -45,7 +45,7 @@ import (
     "strings"
 
     "github.com/astaxie/beego"
-    "api_project/docs/swagger"
+    "Gin_API_Framework/docs/swagger"
 )
 
 const (
