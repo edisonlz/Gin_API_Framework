@@ -50,6 +50,14 @@ func UserLoginHandler(c *gin.Context) {
 
 ```
 
+Go 版本：
+Go 1.6.3
+
+环境配置：
+export GOPATH=/Users/用户x/go/go_path
+export GOBIN=/usr/local/go/bin
+export GOROOT=/usr/local/go
+export GOBIN=/Users/用户x/go/go_path/bin
 
 
 readme 在线：https://maxiang.io/
