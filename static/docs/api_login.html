@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>系统 登录</title>
+
+    <script src="{{ static_url('jquery-1.4.4.min.js') }}"></script>
+	<script src="{{ static_url('ajaxfileupload.js') }}"></script>
+    <script src="{{ static_url('jquery.json.js') }}"></script>
+
+    <link href="{{ static_url('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{ static_url('signin.css') }}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{{ static_url('html5shiv.min.js') }}"></script>
+      
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      {% if alert %}
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">账号或密码错误</span>
+        </div>
+      {% end %}
+
+      <form class="form-signin" method="post" action="/signin">
+        <h2 class="form-signin-heading"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span>&nbsp; 直播-API管理系统</h2>
+        <label for="username" class="sr-only">账号</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="账号" required autofocus>
+        
+
+        <label for="password" class="sr-only">密码</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="密码" required>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{% autoescape None %}
+{% for (module, apilist) in sorted(apis.items(),reverse=True) %}
+   {% for api in apilist %}
+      {{ api.description }} {{ api.method }} {{ api.test_url }}
+   {% end %}
+{% end %}

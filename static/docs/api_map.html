@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Youku Api Map</title>
+	<link rel="stylesheet" href="{{ static_url('slickmap.css') }}" />
+</head>
+
+<body>
+
+	<div class="sitemap">
+		
+		<h1>Youku Api Map</h1>
+		<h2>Youku Api Site Map &mdash; Version 1.0</h2>
+
+		<ul id="primaryNav" class="col12">
+		{% for (module, apilist) in apis.items() %}
+			<li><a href="doc?module={{ module }}">{{ module }}</a>
+				<ul>
+			{% for api in apilist %}
+					<li><a href="doc?name={{ api.name.replace(' ', '_') }}" uri="{{ api.method }} {{ api.uri }}">{{ api.description }}</a></li>
+			{% end %}
+				</ul>
+			</li>
+		{% end %}
+		</ul>
+
+	</div>
+	
+</body>
+
+</html>

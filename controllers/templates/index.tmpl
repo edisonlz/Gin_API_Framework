@@ -1,0 +1,28 @@
+<html>
+    <h1>
+
+        {{if .title  }} T1 {{else}} T0 {{end}}
+
+        {{ range $key, $value := .api }}
+            <div ><li><strong>{{ $key }}</strong> </li></div>
+
+
+
+            {{ range $akey , $aapi := $value }}
+
+            
+                    <li><strong>{{ index $aapi "path"  }}</strong> </li>
+
+                    {{ range $ii,$oper := index $aapi "operations" }}
+
+                        <span><strong>{{ index $oper "httpMethod"  }}</strong> </span>
+
+                    {{  end }}
+                
+                
+            {{ end }}
+        {{ end }}
+        
+
+    </h1>
+</html>

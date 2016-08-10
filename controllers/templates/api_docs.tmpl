@@ -1,0 +1,802 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Live Api Docs</title>
+       <meta name="ROBOTS" content="ALL" />
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+
+
+	<style>
+	body {
+		background: white;
+		color: black;
+		padding: 40px;
+		margin: 0;
+		font-family: Gotham, Helvetica, Arial, sans-serif;
+		line-height: 1;
+	}
+	h1 {
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 20px;
+		margin: 0 0 5px 0;
+	}
+	h2 {
+		font-family: "Lucida Grande", Verdana, sans-serif;
+		font-size: 10px;
+		color: #777777;
+		margin: 0 0 20px 0;
+	}
+
+	h2 b{
+		color: #279919;
+	}
+	
+    .text-error {
+        color: #b94a48;
+    }
+
+    .text-info {
+    color: #3a87ad;
+}
+
+
+	div.content {
+		margin-left: 10px;
+	}
+	.hidden {
+		display: none;
+	}
+	.clear {
+		clear: both;
+	}
+    .api {
+        margin-top: 26px;
+    }
+
+    .api h3 {
+         font-size: 20px;
+         margin: 20 10;
+         padding-bottom: 20px;
+    }
+
+	.api .api_method{
+		font-weight: bold;
+		color: #804000;
+	}
+
+	.api .api_uri {
+		color: #008040;
+	}
+
+	.hapi .api_method{
+		color: #804000;
+		font-size: 11px;
+	}
+	.hapi .api_uri{
+		color: #008040;
+		font-size: 11px;
+	}
+	.module {
+		margin: 40px 0px;
+		list-style: none;
+		color: #6d8fb0;
+	}
+	.module a{
+		color: #1b809e;
+        font-size: 18px;
+	}
+	.module.highlight {
+		background: #ffffa5;
+	}
+	#modules {
+		float: right;
+		width: 200px;
+		margin-top: 80px;
+		background: #f3f7fb;
+		padding: 0px;
+		position: fixed;
+		right: 20px;
+		top: 6px;
+		font-size: 9px;
+        overflow-y:auto;
+	}
+	#modules li{
+		margin: 10px 20px;
+		font-size: 26px;
+		list-style: none;
+		color: #6d8fb0;
+	}
+	#apis{
+		padding: 0px;
+		margin: 0px;
+		margin-right: 230px;
+	}
+	#apis li{
+		list-style: none;
+	}
+	p{
+		margin: 10px 0px;
+	}
+
+	pre{
+		margin: 10px 0px;
+		line-height: 1.5em;
+		background: #EEEEEE;
+		border: 0px solid #E6E6E6;
+		color: #333;
+		padding: 10px;
+		font-size: 12px;
+	}
+
+	pre.ok{
+		background: #D9EDF7;
+        border-color: #BCE8F1;
+	}
+
+	pre.error{
+		background: #F9DFDB;
+	}
+
+	p.api_meta{
+		font-size: 10px;
+	}
+
+	p.api_meta input{
+		font-size: 10px;
+		color: #999;
+		width: 120px;
+		height: 14px;
+		border: 1px solid #EFEFEF;
+	}
+
+	h4 {
+		margin: 10px 0px;
+		font-size: 14px;
+	}
+
+	table.params {
+		margin: 10px 0px;
+		padding: 0;
+		border-collapse:collapse;
+	}
+
+	table.params th{
+		font: bold 16px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+		color: #FFFFFF;
+		border-right: 1px solid #C1DAD7;
+		border-bottom: 1px solid #C1DAD7;
+		border-top: 1px solid #C1DAD7;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 2px 6px 2px 6px;
+		background: #3A87AD  no-repeat;
+	}
+
+	table.params td {
+		border: 1px solid #ececec;
+		background: #fff;
+		padding: 4px 6px 4px 6px;
+		color: #AAA;
+        font-size: 16px;
+	}
+
+	table.params td.select_param{
+		cursor: pointer;
+	}
+
+	table.params tr.selected td {
+		color: #4f6b72;
+	}
+
+	table.params td input.example_input{
+		width: 160px;
+	}
+
+	table.params td .example_value:hover{
+		background: #CFEEEA;
+		color: #1F3035;
+	}
+
+    dt {
+        font-size: 14px;
+    }
+    dd {
+     font-size: 14px;   
+    }
+    
+	.menu {
+		position: absolute;
+		list-style-type: none;
+		margin: 0px;
+		padding: 0px;
+		border: 1px solid #008000;
+	}
+	.menu li{
+		list-style-type: none;
+		padding: 3px 10px;
+		font-size: 12px;
+		background: #fff;
+		cursor: pointer;
+	}
+	.menu li.hover{
+		background: #DBE8F3;
+	}
+    #footer {
+        position:fixed;
+        bottom:0;
+        max-height:240px;
+        width:100%;
+        overflow-y: scroll;
+    }
+    #logging_data {
+        margin: 0px 0px;
+        padding: 0px 0px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+	</style>
+	<script src="/static/jquery-1.4.4.min.js"></script>
+	<script src="/static/ajaxfileupload.js"></script>
+
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    
+	<script>
+
+
+    function update_logging(){
+   //          $.ajax({
+			// 	method: 'GET',
+			// 	data: {},
+			// 	url: '/doc/logging/data',
+			// 	beforeSend: function(req){
+			// 	},
+			// 	success: function (data, textStatus) {
+   //                  data = $.parseJSON(data).join('');
+   //                  $("#logging_data").html(data);
+
+			// 	},
+			// 	error: function (req, textStatus, errorThrown) {
+   //                  //alert(textStatus);
+			// 	}
+			// });
+    }
+
+
+    function toggle_logging(){
+        $('#logging_data').slideToggle();
+        if($("#button_logging").html()=="Show Debug LOG"){
+            $("#button_logging").html("Hide Debug LOG");
+        }else{
+            $("#button_logging").html("Show Debug LOG");
+        }
+    }
+
+
+    function syntaxHighlight(json) {
+        if (typeof json != 'string') {
+             json = JSON.stringify(json, undefined, 4);
+        }
+        //json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    //"key"
+                    cls = 'text-error';
+                } else {
+                    //"string"
+                    cls = 'text-info';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'text-warning';
+            } else if (/null/.test(match)) {
+                cls = 'text-success';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+	jQuery(function($){
+
+         $('#api_type_mod').change(function() {
+             window.location="?api_type=" + $(this).children('option:selected').val()
+        });
+
+
+		$.fn.extend({
+			apiHidden : function(){
+				$(this).each(function(){
+					$(this).find('.content').addClass('hidden');
+					$(this).find('h3 .hapi').removeClass('hidden');
+					$(this).find('h3 a.exp').text('+');
+				});
+			},
+			apiShow : function(){
+				$(this).each(function(){
+					$(this).find('.content').removeClass('hidden');
+					$(this).find('h3 .hapi').addClass('hidden');
+					$(this).find('h3 a.exp').text('-');
+				});
+			},
+			toggleHidden : function(){
+				$(this).each(function(){
+					$(this).find('.content').toggleClass('hidden');
+					$(this).find('h3 .hapi').toggleClass('hidden');
+					texp = $(this).find('h3 a.exp');
+					texp.text(texp.text() == '+' ? '-':'+');
+				});
+			}
+		})
+	
+		$('h3 a.exp, h3 a.api_name').click(function(){
+			$(this).parent().parent().toggleHidden();
+		});	
+		
+		$('td.select_param').click(function(){
+			$(this).parent().toggleClass('selected');
+			//$(this).html($(this).text() == 'x' ? 'v':'x');
+            $(this).html($(this).html() == '<i class="glyphicon glyphicon-remove"></i>' ? '<i class="glyphicon glyphicon-ok"></i>':'<i class="glyphicon glyphicon-remove"></i>');
+		})
+		
+		window['testapi'] = function(api_id, method, uri, need_login, need_appkey,update_cache,is_profile){
+			id = '#api_result_' + api_id;
+
+			params_id = '#api_params_' + api_id;
+			testuser_id = '#api_testuser_' + api_id;
+			api = $('#api_' + api_id);
+			api.apiShow();
+		
+			data = {}
+			files = []
+			$(params_id).find('tr.selected input,tr.selected select').each(function(){
+				if($(this).attr('type') == 'file'){
+					files.push($(this));
+				}else if($(this).val() != ''){
+					data[$(this).attr('name')] = $(this).val();
+				}
+			});
+
+            var r1 = ":id";
+            var r2 = ":xid";
+            var r3 = ":uid";
+            var r4 = ":keyword";
+
+            for(key in data){
+
+                    if(key.indexOf(r1)>-1){
+                        uri = uri.replace(r1,data[key]);
+
+                        delete data[key];
+                    }
+                    if(key.indexOf(r2)>-1){
+                        uri = uri.replace(r2,data[key]);
+                        delete data[key];
+                    }
+
+                    if(key.indexOf(r3)>-1){
+                        uri = uri.replace(r3,data[key]);
+                        delete data[key];
+                    }
+
+                    if(key.indexOf(r4)>-1){
+                        uri = uri.replace(r4,data[key]);
+                        delete data[key];
+                    }
+
+                    if(key == "_cookie"){
+                        uri = uri +"?_cookie=" + data[key];
+                        delete data[key];
+                    }
+
+            }
+
+
+			if(need_appkey){
+				data['app_key'] = api.find('.test_app_key').val();
+			}
+			if(need_login){
+				data['_test_user'] = $(testuser_id).val();
+			}
+
+			params = $.param(data);
+			req_str = '{{ .api_base }}' + uri
+			if(params != ''){
+                if(req_str.indexOf("?")>-1){
+				    req_str += '&' + params;
+                }else{
+                    req_str += '?' + params;
+                }
+			}
+			if(method == 'DELETE'){
+				uri = uri + '?' + params;
+				data = {};
+			}
+			api.find('.test_url').html("<span class=\"label-important\">" + method + "</span> <a target='blank' href='"+req_str+"'>" +req_str+"</a>");
+			$(id).html('Loading......');
+			$(id).show();
+            var start_time,end_time;
+
+			if(files.length == 0){
+                
+				$.ajax({
+					type: method,
+					dataType: 'text',
+					url: '{{ .api_base }}' + uri,
+					data: data,
+					beforeSend: function(req){
+                        start_time = new Date();
+					},
+					success: function (val, textStatus) {
+                        end_time = new Date();
+                        var use = (end_time-start_time);
+
+                        var tag  = "label-important";
+                        if(use<=50){
+                            tag = "label-info";
+                        }
+                        else if(use<=200){
+                            tag = "label-warning";
+                        }
+
+                        //alert($(api).html());
+                        
+                        api.find('.test_url').html(api.find('.test_url').html() + "  <span class=\"label "+tag+"\">" + use + "ms</span>");
+						var reg = /(http:\/\/|https:\/\/)((\w|=|\?|%|\.|\/|&|-)+)/g;
+						val = val.replace(reg, "<a target='_blank' href='$1$2'>$1$2</a>");
+                        //alert(val);
+                        val = jQuery.parseJSON(val);
+
+                        var img_base64 = null;
+                        var image_tag = null;
+
+                        if("results" in val){
+                            if("img_base64" in val["results"]){
+                                img_base64 = val["results"]["img_base64"];
+                                image_tag = '<img alt="Embedded Image" src="data:image/png;base64,'+img_base64+'" />';
+                                api.find('.test_url').html(api.find('.test_url').html() + "  <span class=\"label\">" + image_tag + "</span>");
+                            }
+                        }
+
+                        if("img_base64" in val){
+                                img_base64 = val["img_base64"];
+                                image_tag = '<img alt="Embedded Image" width="100px" src="data:image/png;base64,'+img_base64+'" />';
+                                api.find('.test_url').html(api.find('.test_url').html() + "  <span class=\"label\">" + image_tag + "</span>");
+                          }
+                        
+                        //val = JSON.stringify(val,null,4);
+                        val = syntaxHighlight(val);
+						$(id).html(val);
+						$(id).removeClass('error');
+						$(id).addClass('ok');
+						$(id).show();
+
+					},
+					error: function (req, textStatus, errorThrown) {
+                        val = req.responseText ? req.responseText : req.responseXML;
+                        val = jQuery.parseJSON(val);
+                        //val = JSON.stringify(val,null,4);
+                        val = syntaxHighlight(val);
+						$(id).html(val);
+						$(id).removeClass('ok');
+						$(id).addClass('error');
+						$(id).show();
+					}
+				});
+			} else {
+				data['_test_user'] = $(testuser_id).val();
+				$.ajaxFileUpload({
+					secureuri: false,
+					dataType: 'text',
+					url: '{{ .api_base }}' + uri,
+					data: data,
+					files: files,
+					success: function (data, textStatus) {
+						if(data){
+							data = $(data).text();
+							try {
+								d =$.parseJSON(data);
+								if(d['msg']){
+									$(id).html(data);
+									$(id).removeClass('ok');
+									$(id).addClass('error');
+									$(id).show();
+									return;
+								}
+							} catch(e) {}
+						}
+						$(id).html(data);
+						$(id).removeClass('error');
+						$(id).addClass('ok');
+						$(id).show();
+					},
+					error: function (data, textStatus, e) {
+						$(id).html(data);
+						$(id).removeClass('ok');
+						$(id).addClass('error');
+						$(id).show();
+					}
+				})
+			}
+			return true;
+		};
+		
+		$('.params').find('tr input,tr select').change(function(){
+			tr = $(this).parent().parent();
+			if(!tr.hasClass('selected')){
+				tr.find('td.select_param').click();
+			}
+		});
+		
+		if(window.location.hash != ''){
+			$(window.location.hash).find('.api_name').click();
+		}
+		apis = $('#apis li.api');
+		if(apis.size() == 1){
+			apis.find('.api_name').click();
+		}
+		$('#modules a').click(function(){
+			$('#apis .module').removeClass('highlight');
+			$($(this).attr('href')).addClass('highlight');
+			return true;
+		})
+		$('.appkey_holder').click(function(){
+			old_key = $(this).attr('key');
+			holder = $(this);
+			holder.html('loading...');
+			$.getJSON('/wiapi/doc/apps', function(data){
+				var s = $('<select class="test_app_key"></select>');
+				for(k in data){
+					s.append('<option value="'+ k +'">'+ data[k] +'</option>');
+				}
+				s.val(old_key);
+				holder.replaceWith(s);
+			});
+		});
+		$('#test_app_selected').change(function(){
+			window.location = '?test_app_key=' + $(this).val();
+		});
+		$('.example_value').click(function(){
+			input = $(this).parent().find('input.example_input')
+			api = input.closest('.api');
+			$.ajax({
+				method: 'GET',
+				data: {'id': $(this).attr('val'), 'app_key': api.find('.test_app_key').val(), '_test_user': api.find('.test_user').val()},
+				url: '/wiapi/doc/example',
+				beforeSend: function(req){
+					input.val('loading...');
+				},
+				success: function (data, textStatus) {
+					if(data.substr(0,1) == '['){
+						data = $.parseJSON(data).join(',');
+					}else if(data.substr(0,1) == '{'){
+						datas = $.parseJSON(data);
+						menu = $('<ul class="menu"></ul>');
+						for(k in datas){
+							li = $('<li val="'+ k +'">'+ datas[k] +'</li>');
+							menu.append(li);
+							li.hover(function(){$(this).toggleClass('hover')});
+							li.click(function(){
+								input.val($(this).attr('val'));
+								$(this).parent().remove();
+							});
+						}
+						menu.css({'top':(input.position().top + 20) + 'px', 'left':input.position().left + 'px'});
+						$('body').append(menu);
+						data = 'Select...';
+					}
+					input.val(data);
+				},
+				error: function (req, textStatus, errorThrown) {
+					input.val('error');
+				}
+			});
+		})
+	});
+
+    $(function(){
+        update_logging();
+    })
+
+
+	</script>
+</head>
+
+<body>
+	<nav class="navbar navbar-fixed-top navbar-inverse" style="background-color:#428bca;border-color:#428bca;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="color:#FFF;" href="/doc">
+            <span class="glyphicon glyphicon-grain" aria-hidden="true"></span>&nbsp;GO Gin API管理
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+
+          <p class="navbar-text pull-right" style="color:#FFF;">
+            Logged in as admin<span style="margin:6px;">|</span><a style="color:#FFF;" href="/signout" class="navbar-link">注销</a>
+            &nbsp;
+            <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>
+          </p>
+
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+	<div id="content">
+
+
+         <ul id='modules' class="nav  nav-stacked">
+            {{ range $key, $value := .api }}
+            <li>
+                <h5>
+                    <a href="#module_{{$key}}"> 
+                        <i class="icon-map-marker"></i> 
+                        {{ $key }}
+                    </a>
+                </h5>
+            </li>
+            {{ end }}
+        </ul>
+
+
+
+		<ul id='apis' class="nav">
+
+         <li class="module">
+            <div class="panel panel-warning">
+              <div class="panel-heading" style="height:40px !important;">
+                <h3 class="panel-title" onclick="$('#doc_help').toggle();"><a>移动API帮助文档</a><h3>
+              </div>
+              <div id="doc_help"  class="panel-body">
+                
+                <dl class="dl-horizontal">
+                    <dt>API使用规则</dt>
+                    <dd>1. 点击右侧菜单，选择API分类，如(用户信息 API)。</dd>
+                    <dd>2. 点击对应API，如( 登录接口 )，选择API分类。</dd>
+                    <dd>3. 展开API分类，其中：POST /live/login 代表， Method URL。</dd>
+                    <dd>4. 填写相关参数信息。</dd>
+                    <dd>5. 点击Request发起请求，返回数据在数据栏中。</dd>
+                </dl>
+
+                <dl class="dl-horizontal">
+                    <dt>API接口安全规则</dt>
+                    <dd>Method ： GET | POST </dd>
+                    <dd>增加参数: </dd>
+                    <dd style="padding-left:20px">_s_ ：signature  签名 </dd>
+                    <dd style="padding-left:20px">_t_:当前时间戳，校队系统时间在初始化接口返回,接口参数有效期30分钟 </dd>
+                    <dd style="padding-left:20px">
+                        timestamp = timestamp + (客户端当前时间 -客户端从初始化获得timestamp的时间)
+                    </dd>
+                    <dd style="padding-left:20px">
+                        这样做到原因是需要客户端校队服务器时间，因为客户端时间不准确。
+                    </dd>
+                    <dd> 签名方式: </dd>
+                    <dd style="padding-left:20px">token_string = req_method + ":" + path + ":" +  sorted(query) + ":" + timestamp + ":"  + secret</dd>
+                    <dd style="padding-left:20px">其中：sorted(query) 是按照key的自然顺序排列,然后以key=value的形式累加</dd>
+                    <dd style="padding-left:20px">例如: GET /test?b=2&a=1</dd>
+                    <dd style="padding-left:20px">token_string = GET + ":" +  /test + ":" + a=1b=2 + ":" + 1457665234 + ":" + secret_xxxxxx</dd>
+                    <dd style="padding-left:20px">signature = ngx.md5(token_string)</dd>
+                    <dd style="padding-left:20px">secret秘钥需要服务端提供，另外客户端需要确保secret安全。</dd>
+                </dl>
+            </div>
+
+            
+        </li>
+
+
+        
+
+
+        {{ range $key, $value := .api }}
+
+            <li class="module" id="module_{{$key}}">
+                <ul class="breadcrumb">
+                  <li><a href="#">
+                     Home</a> <span class="divider">/</span>
+                 </li>
+                  <li> <a href="#{{ $key }}">{{ $key }} </a> </li>
+                </ul>
+            </li>
+
+            {{ range $akey , $aapi := $value }}
+
+                {{ range $ii,$oper := index $aapi "operations" }}
+
+                <li class="api" id='api_{{ index $aapi "id" }}'><h3>
+                    <a class="api_name" style='cursor:pointer;'>{{ index $oper "nickname" }}</a>
+
+                    <span class="hapi"><span class='api_method'>{{ index $oper "httpMethod" }}</span>
+                        <span class='api_uri'>{{  index $aapi "path" }}</span>
+                    </span>
+                    
+                     <a class="exp">+</a>
+                     <a class="elink" href="">~</a>
+                    </h3>
+                    <div class="content hidden">
+                    <p class='text-warning'>{{ index $oper "summary" }} </p>
+
+                    <p class='api'>
+                        <span class='api_method'>{{ index $oper "protocal" }}</span>
+                        <span class='api_method'>{{ index $oper "httpMethod" }}</span> <span class='api_uri'>{{ index $aapi "path" }}</span></p>
+                    {{ if index $oper "parameters" }}
+                        <h4>Params</h4>
+                        <table id='api_params_{{ index $aapi "id" }}' class="params">
+                            <thead><th>on</th><th>Name</th><th>Required</th><th>Type</th><th>Default</th><th>Example</th><th>Description</th></thead>
+
+                        {{ range $iii,$p := index $oper "parameters" }}
+                        
+                            
+                            <tr class="{{ if $p.required }} required selected{{ end }}">
+                                <td class="select_param">
+                                    {{ if index $p "required" }} 
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    {{ else }}
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                    {{ end}}
+                                </td>
+
+                                <td><b>{{ index $p "name" }}</b></td>
+                                <td>{{ index $p "required" }}</td>
+                                <td>{{ index $p "dataType" }}</td>
+                                <td>
+                                <input class="form-control" type="text" 
+                        name='{{ index $p "name" }}' value='{{ index $p "default" }}'>
+
+                                </td>
+                                <td><input class="form-control" type="text" 
+                        name='{{ index $p "name" }}' value='{{ index $p "default" }}'></td>
+                                <td>{{ index $p "description" }}</td>
+                            </tr>
+                            
+                        {{ end }}
+                        </table>
+                    {{ else }}
+                        <h4>No Params</h4>
+                    {{ end }}
+
+
+                    <p class='api_test'>
+                        <button class="btn btn-success" type="button" onclick="testapi('{{ index $aapi "id" }}', '{{ index $oper "httpMethod" }}', '{{ index $aapi "path" }}', false,false,false,false)";>Request</button>
+
+                        <span class="test_url"></span>
+                    </p>
+
+                    
+                    <pre id='api_result_{{ index $aapi "id" }}' class="brush: js;"></pre>
+
+                    </div>
+                </li>
+
+                {{end}}
+            {{ end }}
+        {{ end }}
+        
+
+		</ul>
+		<div class="clear"></div>
+	</div>
+
+
+    <div id="footer">
+        <!-- <div>
+            
+            <button class="btn btn-inverse" type="button" onclick='clear_logging();'>Clear Log</button> 
+        </div>
+        <div id="logging_data" style="display: none;background-color: #FFF;">
+        </div> -->
+    </div>
+
+</body>
+</html>

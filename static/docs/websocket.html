@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml>
+<head>
+    <meta charset="utf-8"/>
+    <title>MBook</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+
+
+<h3>
+  var ws = new WebSocket("ws://test.api.3g.youku.com/thirdpart/session/pull?pid=69b81504767483cf");
+</h3>
+<h3>
+      ws.onopen = function() {
+</h3>
+<h3>
+         //guid
+</h3>
+<h3>
+         ws.send("9c553730ef5b6c8c542bfd31b5e25b69");
+</h3>
+<h3>
+      };
+</h3>
+<h3>
+      ws.onmessage = function (evt) {
+</h3>
+<h3>
+         alert(evt.data);
+</h3>
+<h3>
+      };
+</h3>
+
+
+<script type="text/javascript">
+      var ws = new WebSocket("ws://test.api.3g.youku.com/thirdpart/session/pull?pid=69b81504767483cf");
+      ws.onopen = function() {
+         //guid
+         ws.send("9c553730ef5b6c8c542bfd31b5e25b69");
+      };
+      ws.onmessage = function (evt) {
+         alert(evt.data);
+      };
+</script> 
+
+</html>
