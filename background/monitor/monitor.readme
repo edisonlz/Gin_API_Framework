@@ -1,0 +1,20 @@
+http://toutiao.com/i6263427801903268353/
+
+go get github.com/uber/go-torch
+go get github.com/uber/go-torch
+go get github.com/tools/godep
+godep restore
+git clone https://github.com/brendangregg/FlameGraph.git
+
+
+到https://github.com/catapult-project/catapult/tree/master/tracing下载trace-viewer工具，执行
+
+
+
+go-torch --time=15 --file "torch.svg" --url http://127.0.0.1:5567
+
+
+
+gin profile
+
+sudo env GOPATH=/Users/liuzheng/go/go_path go get github.com/DeanThompson/ginpprof

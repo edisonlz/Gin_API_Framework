@@ -6,20 +6,24 @@ import (
     "fmt"
     "log"
     "os"
-
+    //"runtime"
     "github.com/gin-gonic/gin"
     "Gin_API_Framework/routers"
     _ "Gin_API_Framework/models"
     _ "Gin_API_Framework/docs"
     _ "github.com/astaxie/beego"
+    
 )
 
 
 func main() {
 
     fmt.Println("[Server Starting]...")
+
+
     gin.SetMode(gin.ReleaseMode)
     router := routers.InitRouter()
+
     
     server := endless.NewServer("127.0.0.1:8080", router)
     server.ReadTimeout = 3 * time.Second

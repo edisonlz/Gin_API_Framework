@@ -11,6 +11,7 @@ package routers
 import (
     _ "github.com/astaxie/beego"
     "github.com/gin-gonic/gin"
+    "github.com/DeanThompson/ginpprof"
     "Gin_API_Framework/controllers"
     "net/http"
     "path"
@@ -60,6 +61,9 @@ func InitRouter() http.Handler {
     router.GET("/test", func(c *gin.Context) {
         c.Redirect(http.StatusMovedPermanently, "http://www.google.com/")
     })
+
+    fmt.Println("[Plugin Router Profile]...")
+    ginpprof.Wrapper(router)
 
     return router
 
