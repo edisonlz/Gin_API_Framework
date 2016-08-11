@@ -6,11 +6,10 @@ import (
     "fmt"
     "log"
     "os"
-    "path"
+    
     //"runtime"
     "github.com/gin-gonic/gin"
     "Gin_API_Framework/routers"
-    "Gin_API_Framework/utils"
     _ "Gin_API_Framework/models"
     _ "Gin_API_Framework/docs"
     _ "github.com/astaxie/beego"
