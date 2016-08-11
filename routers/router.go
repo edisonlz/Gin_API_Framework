@@ -44,6 +44,7 @@ func InitRouter() http.Handler {
     fmt.Println("[Register Static Path]",static_path)
 
     inmem_store := cache.NewInMemoryStore(time.Second)
+    //memcached_store := cache.NewMemcachedStore([]string{"localhost:11211"},time.Minute * 5)
 
 	router := gin.New()
 
