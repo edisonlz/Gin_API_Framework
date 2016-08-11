@@ -13,15 +13,25 @@ import (
     "github.com/gin-gonic/gin"
     "github.com/DeanThompson/ginpprof"
     "Gin_API_Framework/controllers"
+    "Gin_API_Framework/middleware/contrib/cache"
+    "Gin_API_Framework/middleware/contrib/gin-nice-recovery"
     "net/http"
     "path"
     "runtime"
     "fmt"
+    "time"
 )
 
 func callerSourcePath() string {
     _, callerPath, _, _ := runtime.Caller(1)
     return path.Dir(callerPath)
+}
+
+func recoveryHandler(c *gin.Context, err interface{}) {
+    c.JSON(400,  gin.H{
+        "status": "fail",
+        "err":   err,
+    })
 }
 
 func InitRouter() http.Handler {
@@ -33,10 +43,14 @@ func InitRouter() http.Handler {
     static_path := path.Join(curpath, "..", "static","docs")
     fmt.Println("[Register Static Path]",static_path)
 
+    inmem_store := cache.NewInMemoryStore(time.Second)
+
 	router := gin.New()
 
     router.Use(gin.Logger())
-    router.Use(gin.Recovery())
+    router.Use(nice.Recovery(recoveryHandler))
+
+
     router.LoadHTMLGlob(temp_path + "/*")
     router.Static("/static", static_path)
     router.StaticFS(static_path, http.Dir("static"))
@@ -52,7 +66,8 @@ func InitRouter() http.Handler {
         v1.GET("/logout", controllers.UserLogoutHandler)
         v1.GET("/create", controllers.CreateUserHandler)
         v1.GET("/query", controllers.UserQueryByIdHandler)
-        v1.GET("/list", controllers.UserListHandler)
+        //cache 5 minute
+        v1.GET("/list",  cache.CachePage(inmem_store, time.Minute * 5 ,controllers.UserListHandler))
     }
 
     
