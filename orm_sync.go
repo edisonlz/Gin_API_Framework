@@ -3,7 +3,7 @@ package main
 import (
     "fmt"
     "github.com/astaxie/beego/orm"
-    _ "api_project/models"
+    _ "Gin_API_Framework/models"
 )
 
 
