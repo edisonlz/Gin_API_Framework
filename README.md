@@ -30,6 +30,7 @@
 
 #####执行服务
     $ go run main.go
+    $ open http://127.0.0.1:8080/doc
 ![Alt text](./static/hello.png)
 
 ###框架结构
