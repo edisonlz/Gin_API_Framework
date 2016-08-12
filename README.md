@@ -130,5 +130,16 @@ func recoveryHandler(c *gin.Context, err interface{}) {
 
 ```
 
+### go pprof debug
+``` go
+
+ginpprof.Wrapper(router)}
+
+go http://127.0.0.1:8080/debug/pprof/
+
+```
+
+
+
 
 #####作者：（优酷）edisonlz,  hao,  p.p 
