@@ -30,7 +30,7 @@
 
 #####执行服务
     $ go run main.go
-![Alt text](./hello.png)
+![Alt text](./static/hello.png)
 
 ###框架结构
 - controllers ： API  接口代码
