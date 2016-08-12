@@ -24,8 +24,8 @@
 
 ## 环境配置
 #####部署服务
-- go version go1.6.3
-- godep 
+- go version go1.6.3 (golang.org) 翻墙
+- godep ( https://github.com/tools/godep)
 - cd Gin_API_Framework/    && godep restore
 
 #####执行服务
