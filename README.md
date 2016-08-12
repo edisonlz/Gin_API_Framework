@@ -45,30 +45,61 @@
 
 ### 代码块
 ``` go
-// @Title User Login
+// @Title User Query By ID
 // @API_GROUP User
-// @Description 用户登录接口
+// @Description 查询用户接口通过用户ID
 // @Success 200 {object} 
-// @Param   name     query   string true  "user name"  "username"
-// @Param   pwd      query   string  true "password"  "password"
+// @Param   uid     query   string false       "user id"
 // @Failure 400 no enough input
 // @Failure 500 get  common error
-// @router /user/login [get]
-func UserLoginHandler(c *gin.Context) {
-        name := c.Query("name")
-        pwd := c.Query("pwd")
-        message := name + " is " + pwd
-        var msg = new(msg_struct.Msg)
-        msg.Message = message
-        fmt.Println(msg.Message)
+// @router /user/query [get]
+func UserQueryByIdHandler(c *gin.Context) {
 
-        c.JSON(http.StatusOK, gin.H{
-            "status":  "success",
-            "message": message,
+    suid := c.Query("uid")
+    uid , error := strconv.Atoi(suid)
+    if error != nil {
+        c.JSON(400, gin.H{
+            "status":  "fail",
+            "msg": "字符串转换成整数失败",
         })
+        return
+    }
+
+    u := user.UserQueryById(uid)
+
+    c.JSON(http.StatusOK, gin.H {
+        "status":  "success",
+        "user": u,
+    })
+
 }
 
 ```
+
+
+
+### ORM层
+``` go
+
+func UserList() (users []User) {
+
+    o := orm.NewOrm()
+    qs := o.QueryTable("user")
+
+    var us []User
+    cnt, err :=  qs.Filter("id__gt", 0).OrderBy("-id").Limit(10, 0).All(&us)
+    if err == nil {
+        fmt.Printf("count", cnt)
+        for _, u := range us {
+            fmt.Println(u)
+        }
+    }
+    return us
+}
+
+
+```
+
 
 
 
