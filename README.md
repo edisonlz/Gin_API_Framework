@@ -81,3 +81,18 @@ memcached_store := cache.NewMemcachedStore([]string{"localhost:11211"},time.Minu
 v1.GET("/list",  cache.CachePage(inmem_store, time.Minute * 5 ,controllers.UserListHandler))
 
 ```
+
+
+### 中间件配置
+``` go
+
+router.Use(nice.Recovery(recoveryHandler))
+
+func recoveryHandler(c *gin.Context, err interface{}) {
+    c.JSON(400,  gin.H{
+        "status": "fail",
+        "err":   err,
+    })
+}
+
+```
