@@ -15,12 +15,32 @@
 
 ## 开始使用
 
-执行服务
->  go run main.go
-生成文档
->  go run gen_doc.go
-同步数据库模型
->  go run orm_sync.go
+#####执行服务
+    $ go run main.go
+#####生成文档
+    $ go run gen_doc.go
+#####同步数据库模型
+    $ go run orm_sync.go
+
+## 环境配置
+#####部署服务
+- go version go1.6.3
+- godep 
+- cd Gin_API_Framework/    && godep restore
+
+#####执行服务
+    $ go run main.go
+![Alt text](./hello.png)
+
+###框架结构
+- controllers ： API  接口代码
+- models：ORM数据模型代码
+- routers：API路由配置代码
+- middleware：中间件代码
+- static：静态文件代码
+- utils：常用方法代码
+- vendor：godep save 生成依赖代码
+- background：后端定时/异步服务代码
 
 
 ### 代码块
@@ -50,14 +70,14 @@ func UserLoginHandler(c *gin.Context) {
 
 ```
 
-Go 版本：
-Go 1.6.3
-
-环境配置：
-export GOPATH=/Users/用户x/go/go_path
-export GOBIN=/usr/local/go/bin
-export GOROOT=/usr/local/go
-export GOBIN=/Users/用户x/go/go_path/bin
 
 
-readme 在线：https://maxiang.io/
+### 缓存配置
+``` go
+
+inmem_store := cache.NewInMemoryStore(time.Second)
+memcached_store := cache.NewMemcachedStore([]string{"localhost:11211"},time.Minute * 5)
+    
+v1.GET("/list",  cache.CachePage(inmem_store, time.Minute * 5 ,controllers.UserListHandler))
+
+```
