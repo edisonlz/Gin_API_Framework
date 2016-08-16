@@ -28,6 +28,7 @@ import (
     "runtime"
     "fmt"
     "time"
+    "Gin_API_Framework/middleware/contrib/sessions"
 )
 
 func callerSourcePath() string {
@@ -59,7 +60,6 @@ func InitRouter() http.Handler {
     router.Use(gin.Logger())
     router.Use(nice.Recovery(recoveryHandler))
 
-
     router.LoadHTMLGlob(temp_path + "/*")
     router.Static("/static", static_path)
     router.StaticFS(static_path, http.Dir("static"))
@@ -74,7 +74,7 @@ func InitRouter() http.Handler {
         v1.GET("/login", controllers.UserLoginHandler)
         v1.GET("/logout", controllers.UserLogoutHandler)
         v1.GET("/create", controllers.CreateUserHandler)
-        v1.GET("/query", controllers.UserQueryByIdHandler)
+        v1.GET("/query", sessions.LoginRequired(controllers.UserQueryByIdHandler))
         //cache 5 minute
         v1.GET("/list",  cache.CachePage(inmem_store, time.Minute * 5 ,controllers.UserListHandler))
     }
