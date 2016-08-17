@@ -1,7 +1,6 @@
 package redis_model
 
 import (
-    "github.com/garyburd/redigo/redis"
     "encoding/json"
     "time"
     "log"
@@ -13,30 +12,32 @@ type RedisQueue struct {
     key string
 }
 
-type register_func func(string)
+type register_func func(map[string]interface{})
 
+type dic_type map[string]interface{}
 
 // until redigo supports sharding/clustering, only one host will be in hostList
-func NewRedisQueue(key string) *RedisClient {
-    rclient:= NewRedisQueue("127.0.0.1:6379","",time.Second * 60)
+func NewRedisQueue(key string) *RedisQueue {
+    rclient:= NewRedisCache("127.0.0.1:6379","",time.Second * 60)
     return &RedisQueue{rclient,key}
 }
 
 /* Queue Function */
-func (c *RedisQueue) ASync(value map[string]interface{}) error {
+func (c *RedisQueue) ASync(value dic_type) error {
 
-    v, _ := string(json.Marshal(value))
+    v, _ := json.Marshal(value)
     return c.queue_client.LPush(c.key,v)
 }
 
-func (c *RedisClient) Do(f register_func) {
+func (c *RedisQueue) Do(f register_func) {
      for {
 
         v , err := c.queue_client.BRpop(c.key)
 
-        var dat map[string]interface{}
+        var dat dic_type
         if err := json.Unmarshal(v, &dat); err != nil {
-            panic(err)
+            log.Println(err)
+            continue
         }
 
         f(dat)

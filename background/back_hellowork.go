@@ -1,9 +1,7 @@
-package background
+package main
 
-import ( 
-        "Gin_API_Framework/utils/redis_model"
-        "log"
-        )
+import ( "Gin_API_Framework/utils/redis_model"
+        "log")
 
 
 func sync_hello(value map[string]interface{}) {
@@ -15,7 +13,8 @@ func sync_hello(value map[string]interface{}) {
 func main(){
 
     queue := NewRedisQueue("channel.test")
-    value = map[string]interface{"hello": 1, "world": 2}
+    value := map[string]int{"hello": 1, "world": 2}
     queue.ASync(value)
     queue.Do(sync_hello)
+
 }

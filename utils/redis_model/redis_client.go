@@ -49,22 +49,25 @@ func NewRedisCache(host string, password string, defaultExpiration time.Duration
 }
 
 /* Queue Function */
-func (c *RedisClient) LPush(key string,  value string) error {
+func (c *RedisClient) LPush(key string,  value []byte) error {
     conn := c.pool.Get()
     defer conn.Close()
     raw, err := conn.Do("LPUSH", key , value)
     if raw == nil {
-        return ErrCacheMiss
+        return nil
     }
     item, err := redis.Bytes(raw, err)
+    if item !=nil {
+        log.Println(item)
+    }
     return err
 }
 
 
-func (c *RedisClient) BRpop(key string) (interface{}, error) {
+func (c *RedisClient) BRpop(key string) ([]byte, error) {
     conn := c.pool.Get()
     defer conn.Close()
-    raw, err := redis.string(conn.Do("BRPOP", key ,0))
+    raw, err := redis.Bytes(conn.Do("BRPOP", key ,0))
     if err != nil {
         log.Println(err)
     }
