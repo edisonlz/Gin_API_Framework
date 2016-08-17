@@ -76,10 +76,21 @@ func CreateUserHandler(c *gin.Context) {
     user := new(user.User)
 
     success := user.CreateUser(name ,gender ,phone)
-    
+    //name string,
+    //value string,
+    //maxAge int,
+    //path string,
+    //domain string,
+    //secure bool,
+    //httpOnly bool,
+    c.SetSecureCookie("user_token","1", 222, "/asd","*",true,true)
+    v, _ := c.GetSecureCookie("user_token",10)
+    v1,_ := c.Cookie("user_token")
     c.JSON(http.StatusOK, gin.H{
         "status":  "success",
         "is_created": success,
+        "cookie" : v,
+        "cookie2" : v1,
     })
 
 }
@@ -106,6 +117,10 @@ func UserQueryByIdHandler(c *gin.Context) {
     }
 
     u := user.UserQueryById(uid)
+
+    c.JSON(http.StatusUnauthorized, gin.H {
+        "status":  "failed",
+    })
 
     c.JSON(http.StatusOK, gin.H {
         "status":  "success",

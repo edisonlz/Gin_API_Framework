@@ -2,7 +2,8 @@
 *.o
 *.a
 *.so
-
+.idea/*
+.idea/
 # Folders
 _obj
 _test
