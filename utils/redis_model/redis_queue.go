@@ -26,7 +26,7 @@ func NewRedisQueue(key string) *RedisQueue {
 func (c *RedisQueue) ASync(value dic_type) error {
 
     v, _ := json.Marshal(value)
-    //log.Println("marshal",v)
+    log.Println("[Marshal]",v)
     return c.queue_client.LPush(c.key,v)
 }
 
