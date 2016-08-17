@@ -64,13 +64,21 @@ func (c *RedisClient) LPush(key string,  value []byte) error {
 }
 
 
-func (c *RedisClient) BRpop(key string) ([]byte, error) {
+func (c *RedisClient) BRpop(key string) ( []interface {}, error) {
     conn := c.pool.Get()
     defer conn.Close()
-    raw, err := redis.Bytes(conn.Do("BRPOP", key ,0))
+    raw, err := conn.Do("BRPOP", key , 0)
+    //log.Println("[Redis Client Raw]",raw)
     if err != nil {
-        log.Println(err)
+        log.Println("[Redis Client BRpop]",err)
     }
-    return raw, err
+
+    item, ierr := redis.Values(raw, err)
+    if item !=nil {
+        log.Println("[Redis Client BRpop]",ierr)
+    }
+
+    //log.Println("[Redis Client item]",item)
+    return item, err
 }
 

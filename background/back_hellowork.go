@@ -1,20 +1,33 @@
 package main
 
-import ( "Gin_API_Framework/utils/redis_model"
-        "log")
+import ( 
+        "Gin_API_Framework/utils/redis_model"
+        "log"
+)
 
 
-func sync_hello(value map[string]interface{}) {
+func sync_hello(dic []interface {}) {
 
     log.Println("[sync_hello]...")
-    log.Println(value)
+    log.Println(dic)
+
+    for key,value:=range dic {
+        log.Println(key,value)
+    }
+
 }
+
+
 
 func main(){
 
-    queue := NewRedisQueue("channel.test")
-    value := map[string]int{"hello": 1, "world": 2}
+    queue := redis_model.NewRedisQueue("channel.test")
+    value := map[string]interface{}{}
+    value["hello"] = 1
+    value["world"] = 2
+
     queue.ASync(value)
+
     queue.Do(sync_hello)
 
 }
