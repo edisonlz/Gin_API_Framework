@@ -3,6 +3,7 @@ package sessions
 import (
 	"github.com/gin-gonic/gin"
 	//"fmt"
+	"Gin_API_Framework/middleware/contrib/secure_cookie"
 	"net/http"
 )
 
@@ -13,7 +14,7 @@ import (
 func LoginRequired(handle gin.HandlerFunc) gin.HandlerFunc {
 
 	return func(c *gin.Context) {
-		userToken, cookie_err := c.GetSecureCookie("user_token",1)
+		userToken, cookie_err := secure_cookie.GetSecureCookie(c,"user_token",1)
 
 		var is_login  bool = true
 
