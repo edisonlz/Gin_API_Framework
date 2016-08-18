@@ -87,12 +87,11 @@ func CreateUserHandler(c *gin.Context) {
     secure_cookie.SetSecureCookie(
         c, "user_token","1", 222, "/asd","*",true,true)
     v, _ := secure_cookie.GetSecureCookie(c, "user_token",10)
-    v1,_ := c.Cookie("user_token")
+
     c.JSON(http.StatusOK, gin.H{
         "status":  "success",
         "is_created": success,
         "cookie" : v,
-        "cookie2" : v1,
     })
 
 }

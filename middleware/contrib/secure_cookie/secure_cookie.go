@@ -1,5 +1,35 @@
 package secure_cookie
 
+// DEMO
+//import (
+//	"Gin_API_Framework/middleware/contrib/secure_cookie"
+//)
+
+//func DemoHandler(c *gin.Context) {
+
+//     Set Secure Cookie
+//     secure_cookie.SetSecureCookie(
+//		c, "user_token","1", 222, "/asd","*",true,true)
+
+//     Get Secure Cookie
+//     v, _ := secure_cookie.GetSecureCookie(c, "user_token",10)
+
+//
+//	c.JSON(http.StatusOK, gin.H{
+//		"status":  "success",
+//		"is_created": success,
+//		"cookie" : v,
+//	})
+//
+//}
+
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
+
+
 import (
 	"errors"
 	"encoding/hex"
@@ -7,11 +37,9 @@ import (
 	"crypto/hmac"
 	"fmt"
 	"encoding/base64"
-	"github.com/gin-gonic/gin"
 	"time"
 	"strings"
 	"strconv"
-	"net/http"
 )
 
 const (
@@ -82,6 +110,7 @@ func  SetSecureCookie(
 	domain string,
 	secure bool,
 	httpOnly bool, ) {
+
 	signedValue := createSignedValue(SECRET_KEY, name, value)
 	if path == "" {
 		path = "/"
