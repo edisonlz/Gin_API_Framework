@@ -19,9 +19,9 @@
 #####执行服务
     $ go run main.go
 #####生成文档
-    $ go run gen_doc.go
+    $ go run gen_doc.go 
 #####同步数据库模型
-    $ go run orm_sync.go
+    $ go run orm_sync.go orm syncdb
 
 ## 环境配置
 #####部署服务
