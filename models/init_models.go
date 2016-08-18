@@ -27,7 +27,7 @@ func init() {
     orm.RegisterModel(new(user.User))
     orm.RegisterModel(new(user.Post))
 
-    mysql_config := "root:@/go_platform?charset=utf8"
+    mysql_config := "root:donghao654321@/go_platform?charset=utf8"
     // set default database
     orm.RegisterDataBase("default", "mysql", mysql_config)
     //set db params

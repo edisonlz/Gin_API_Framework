@@ -367,10 +367,9 @@ const (
 	SINGNATURE_V2  = 2
 	DEFAULT_SIGNATURE_VER = SINGNATURE_V1
 	SECRET_KEY = "jkfldakjdksjafds&(*%^&GHJVE$%CUVuifgdiaisdf(&*&676"
-
 )
 
-func (c *Context) GetSecureCookie(name string, max_age_days int) (string,error){
+func (c *Context) GetSecureCookie(name string, maxAgeDays int) (string,error){
 	rawCookie, err:= c.Cookie(name)
 
 	var value = ""
@@ -378,7 +377,7 @@ func (c *Context) GetSecureCookie(name string, max_age_days int) (string,error){
 		return value, err
 	}
 
-	value, err = decodeSignedValue(name,rawCookie,max_age_days)
+	value, err = decodeSignedValue(name,rawCookie,maxAgeDays)
 	return value, err
 }
 
