@@ -4,8 +4,6 @@ package controllers
 import (
     "github.com/gin-gonic/gin"
     "net/http"
-    "fmt"
-    "Gin_API_Framework/controllers/msg_struct"
     "Gin_API_Framework/models/user"
     "Gin_API_Framework/middleware/contrib/sessions"
     "strconv"
@@ -27,18 +25,25 @@ import (
 // @Failure 500 get  common error
 // @router /user/login [get]
 func UserLoginHandler(c *gin.Context) {
-        name := c.Query("name")
-        pwd := c.Query("pwd")
-        message := name + " is " + pwd
-        var msg = new(msg_struct.Msg)
-        msg.Message = message
-        fmt.Println(msg.Message)
+    //user login
+    name := c.Query("name")
+    pwd := c.Query("pwd")
 
-        sessions.AuthLogin(c, "1")
-        c.JSON(http.StatusOK, gin.H{
-            "status":  "success",
-            "message": message,
-        })
+    u, _:= user.UserQueryByName(name)
+
+    valid := u.CheckPassword(pwd)
+
+    if valid{
+            sessions.AuthLogin(c, strconv.Itoa(u.Id))
+            c.JSON(http.StatusOK, gin.H{
+                "status":  "success",
+            })
+        }else{
+            c.JSON(http.StatusUnauthorized, gin.H{
+                "status":  "failed",
+                "message": "login failed",
+            })
+        }
 }
 
 
@@ -64,9 +69,10 @@ func UserLogoutHandler(c *gin.Context) {
 // @API_GROUP User
 // @Description 创建用户接口
 // @Success 200 {object} 
-// @Param   name     query   string false       "user name"
-// @Param   gender      query   string  false       "gender"
-// @Param   phone      query   string  false       "phone"
+// @Param   name     query   string true   "user name"    "user name"
+// @Param   phone      query   string  true       "phone"
+// @Param   pwd      query   string  true "password"  "password"
+
 // @Failure 400 no enough input
 // @Failure 500 get  common error
 // @router /user/create [get]
@@ -75,12 +81,14 @@ func CreateUserHandler(c *gin.Context) {
     name := c.Query("name")
     gender := c.Query("gender")
     phone := c.Query("phone")
+    //password := c.Query("password")
 
     user := new(user.User)
 
-    success := user.CreateUser(name ,gender ,phone)
+    success := user.CreateUser(
+        name ,gender ,phone, gender)
 
-    sessions.AuthLogin(c, "1")
+    sessions.AuthLogin(c, strconv.Itoa(user.Id))
     c.JSON(http.StatusOK, gin.H{
         "status":  "success",
         "is_created": success,

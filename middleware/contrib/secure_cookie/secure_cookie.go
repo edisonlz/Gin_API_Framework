@@ -153,7 +153,6 @@ func createSignedValue(
 
 
 func createSignatureV1(secret string, name string, value string, timestamp string) string{
-	fmt.Println(secret,name,value,timestamp)
 	key := secret
 	h := hmac.New(sha1.New, []byte(key))
 	h.Write([] byte(name + value + timestamp))
