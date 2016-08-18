@@ -65,28 +65,28 @@ func UserLogoutHandler(c *gin.Context) {
     })
 }
 
+
+
 // @Title User Create
 // @API_GROUP User
 // @Description 创建用户接口
 // @Success 200 {object} 
-// @Param   name     query   string true   "user name"    "user name"
-// @Param   phone      query   string  true       "phone"
-// @Param   pwd      query   string  true "password"  "password"
-
+// @Param   name     query   string false       "user name"
+// @Param   phone     query   string false       "user name"
+// @Param   pwd     query   string false       "user name"
 // @Failure 400 no enough input
 // @Failure 500 get  common error
 // @router /user/create [get]
 func CreateUserHandler(c *gin.Context) {
 
     name := c.Query("name")
-    gender := c.Query("gender")
     phone := c.Query("phone")
-    //password := c.Query("password")
-
+    pwd := c.Query("pwd")
+    gender := c.Query("gender")
     user := new(user.User)
 
     success := user.CreateUser(
-        name ,gender ,phone, gender)
+        name ,gender ,phone, pwd)
 
     sessions.AuthLogin(c, strconv.Itoa(user.Id))
     c.JSON(http.StatusOK, gin.H{
