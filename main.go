@@ -13,7 +13,7 @@ import (
     _ "Gin_API_Framework/models"
     _ "Gin_API_Framework/docs"
     _ "github.com/astaxie/beego"
-    
+    _ "gopkg.in/redis.v4"
 )
 
 

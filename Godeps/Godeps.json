@@ -145,9 +145,48 @@
 			"Rev": "a646d33e2ee3172a661fc09bca23bb4889a41bc8"
 		},
 		{
+			"ImportPath": "gopkg.in/bsm/ratelimit.v1",
+			"Rev": "db14e161995a5177acef654cb0dd785e8ee8bc22"
+		},
+		{
 			"ImportPath": "gopkg.in/go-playground/validator.v8",
 			"Comment": "v8.18.1",
 			"Rev": "5f57d2222ad794d0dffb07e664ea05e2ee07d60c"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v4",
+			"Comment": "v4.1.3",
+			"Rev": "909c26e76cb93c5fc81469418ab6d05e7725ba53"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v4/internal",
+			"Comment": "v4.1.3",
+			"Rev": "909c26e76cb93c5fc81469418ab6d05e7725ba53"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v4/internal/consistenthash",
+			"Comment": "v4.1.3",
+			"Rev": "909c26e76cb93c5fc81469418ab6d05e7725ba53"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v4/internal/errors",
+			"Comment": "v4.1.3",
+			"Rev": "909c26e76cb93c5fc81469418ab6d05e7725ba53"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v4/internal/hashtag",
+			"Comment": "v4.1.3",
+			"Rev": "909c26e76cb93c5fc81469418ab6d05e7725ba53"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v4/internal/pool",
+			"Comment": "v4.1.3",
+			"Rev": "909c26e76cb93c5fc81469418ab6d05e7725ba53"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v4/internal/proto",
+			"Comment": "v4.1.3",
+			"Rev": "909c26e76cb93c5fc81469418ab6d05e7725ba53"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",

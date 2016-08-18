@@ -12,7 +12,7 @@ type RedisQueue struct {
     key string
 }
 
-type register_func func([]interface {})
+type register_func func(map[string]interface{})
 
 type dic_type map[string]interface{}
 
@@ -23,31 +23,27 @@ func NewRedisQueue(key string) *RedisQueue {
 }
 
 /* Queue Function */
-func (c *RedisQueue) ASync(value dic_type) error {
+func (c *RedisQueue) ASync(value dic_type) {
 
     v, _ := json.Marshal(value)
-    log.Println("[Marshal]",v)
-    return c.queue_client.LPush(c.key,v)
+    vv := string(v)
+    log.Println("[Marshal]",vv)
+    c.queue_client.LPush(c.key,vv)
 }
 
 func (c *RedisQueue) Do(f register_func) {
      for {
 
-        v , err := c.queue_client.BRpop(c.key)
+        v := c.queue_client.BRpop(c.key)
 
-        //log.Println("[brpop]",v,err)
-
-        // var dat dic_type
-        // if err := json.Unmarshal(v, &dat); err != nil {
-        //     log.Println("[Do error]",err)
-        //     continue
-        // }
-
-        f(v)
-
-        if err!=nil {
-            log.Println("[redis queue err]")
-            log.Println(err)
+        if v!=nil {
+            value := v[1]
+            var dat dic_type
+            if err := json.Unmarshal([]byte(value), &dat); err != nil {
+                log.Println("[Do error]",err)
+                continue
+            }
+            f(dat)
         }
     }
 }
