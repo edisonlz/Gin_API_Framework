@@ -7,13 +7,13 @@ import (
 )
 
 const (
-	COOKIE_MAX_AGE = 122344
-	COOKIE_DOMAIN = "*"
+	COOKIE_MAX_AGE = 1999999999
+	COOKIE_DOMAIN = "www.youku.com"
 	COOKIE_PATH = "/"
 )
 
 
-// set secure cookie
+// set secure cookie user_token
 func AuthLogin(c *gin.Context, uid string)  {
 	secure_cookie.SetSecureCookie(
 		c,
