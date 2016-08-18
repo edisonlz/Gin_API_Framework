@@ -29,6 +29,11 @@ gender string,
 phone string,
 rawPassword string)  bool {
 
+    //
+    _, err := UserQueryByName(name)
+    if err == nil{
+        return false
+    }
     o := orm.NewOrm()
     o.Using("default")
 
@@ -98,7 +103,7 @@ func UserQueryByName(name string) (User, error) {
     qs := o.QueryTable("user")
 
     err := qs.Filter("Name", name).One(&user)
-
+    fmt.Println(err)
     if err == nil {
         fmt.Println(user.Name)
         return user,nil
