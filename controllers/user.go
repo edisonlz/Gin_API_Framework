@@ -6,8 +6,8 @@ import (
     "net/http"
     "fmt"
     "Gin_API_Framework/controllers/msg_struct"
-    "Gin_API_Framework/middleware/contrib/secure_cookie"
     "Gin_API_Framework/models/user"
+    "Gin_API_Framework/middleware/contrib/sessions"
     "strconv"
     _ "github.com/astaxie/beego"
     _ "io/ioutil"
@@ -34,6 +34,7 @@ func UserLoginHandler(c *gin.Context) {
         msg.Message = message
         fmt.Println(msg.Message)
 
+        sessions.AuthLogin(c, "1")
         c.JSON(http.StatusOK, gin.H{
             "status":  "success",
             "message": message,
@@ -52,6 +53,7 @@ func UserLoginHandler(c *gin.Context) {
 func UserLogoutHandler(c *gin.Context) {
     name := c.Query("name")
     message := name + " is logout"
+    sessions.AuthLogout(c)
     c.JSON(http.StatusOK, gin.H{
         "status":  "success",
         "message": message,
@@ -77,23 +79,12 @@ func CreateUserHandler(c *gin.Context) {
     user := new(user.User)
 
     success := user.CreateUser(name ,gender ,phone)
-    //name string,
-    //value string,
-    //maxAge int,
-    //path string,
-    //domain string,
-    //secure bool,
-    //httpOnly bool,
-    secure_cookie.SetSecureCookie(
-        c, "user_token","1", 222, "/asd","*",true,true)
-    v, _ := secure_cookie.GetSecureCookie(c, "user_token",10)
 
+    sessions.AuthLogin(c, "1")
     c.JSON(http.StatusOK, gin.H{
         "status":  "success",
         "is_created": success,
-        "cookie" : v,
     })
-
 }
 
 

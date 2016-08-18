@@ -19,16 +19,15 @@ import (
     _"Gin_API_Framework/middleware/contrib/gzip"
     _"Gin_API_Framework/middleware/contrib/rest"
     _"Gin_API_Framework/middleware/contrib/secure"
-    _"Gin_API_Framework/middleware/contrib/sessions"
     _"Gin_API_Framework/middleware/contrib/gin-csrf"
     _"Gin_API_Framework/middleware/contrib/commonlog"
+    "Gin_API_Framework/middleware/contrib/sessions"
 
     "net/http"
     "path"
     "runtime"
     "fmt"
     "time"
-    "Gin_API_Framework/middleware/contrib/sessions"
 )
 
 func callerSourcePath() string {
