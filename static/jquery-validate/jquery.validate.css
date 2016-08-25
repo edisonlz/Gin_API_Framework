@@ -1,0 +1,17 @@
+form label.error {
+  background:url("/images/icons/cross_circle.png") no-repeat 0px 0px;
+  padding-left: 16px;
+  padding-bottom: 2px;
+  font-weight: bold;
+  color: #EA5200;
+  border: none;
+}
+
+form label.checked {
+  background:url("/images/icons/tick_circle.png") no-repeat 0px 0px;
+}
+
+form .error {
+  background: none;
+  border: 2px solid #EA5200;
+}

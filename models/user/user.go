@@ -36,7 +36,6 @@ rawPassword string)  bool {
     }
     o := orm.NewOrm()
     o.Using("default")
-
     //base user information
     user.Name = name
     user.Gender = gender
@@ -66,8 +65,9 @@ func genPassword(rawPassowrd string, salt string) string {
     key := salt
     h := hmac.New(sha1.New, []byte(key))
     h.Write([] byte(rawPassowrd))
-    passowrd := hex.EncodeToString(h.Sum(nil))
-    return passowrd
+    password := hex.EncodeToString(
+        h.Sum(nil))
+    return password
 }
 
 //check user password

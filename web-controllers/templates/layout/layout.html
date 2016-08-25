@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{template "layout/layout_section/header.html" .}}
+    {{.HtmlHeadExtend}}
+</head>
+
+<body>
+    {{template "layout/layout_section/nav.html" .}}
+    <div class="container">
+        <div class="row">
+            {{.LayoutContent}}
+            {{template "layout/layout_section/sidebar.html" .}}
+        </div>
+        {{template "layout/layout_section/footer.html" .}}
+    </div><!--/.container-->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="/static/js/line_basic.js"></script>
+    {{.JsFileExtend}}
+</body>
+</html>

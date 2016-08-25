@@ -48,9 +48,12 @@ const (
 	SECRET_KEY = "jkfldakjdksjafds&(*%^&GHJVE$%CUVuifgdiaisdf(&*&676"
 )
 
-func GetSecureCookie(c *gin.Context, name string, maxAgeDays int) (string,error){
-	rawCookie, err:= c.Cookie(name)
+func GetSecureCookie(
+	c *gin.Context,
+	name string,
+	maxAgeDays int) (string,error){
 
+	rawCookie, err:= c.Cookie(name)
 	var value = ""
 	if err != nil{
 		return value, err
@@ -60,7 +63,11 @@ func GetSecureCookie(c *gin.Context, name string, maxAgeDays int) (string,error)
 	return value, err
 }
 
-func decodeSignedValue(name string, value string, maxAgeDays int) (string,error){
+func decodeSignedValue(
+	name string,
+	value string,
+	maxAgeDays int) (string,error){
+
 	version := DEFAULT_SIGNATURE_VER
 
 	var v string
@@ -75,7 +82,11 @@ func decodeSignedValue(name string, value string, maxAgeDays int) (string,error)
 	return v,err
 }
 
-func decodeSignedValueV1(secret string,name string,value string, maxAgeDays int) (string, error){
+func decodeSignedValueV1(
+	secret string,
+	name string,
+	value string,
+	maxAgeDays int) (string, error){
 
 	clock := time.Now().Unix()
 	parts := strings.Split(value,"|")
@@ -152,7 +163,12 @@ func createSignedValue(
 }
 
 
-func createSignatureV1(secret string, name string, value string, timestamp string) string{
+func createSignatureV1(
+	secret string,
+	name string,
+	value string,
+	timestamp string) string{
+
 	key := secret
 	h := hmac.New(sha1.New, []byte(key))
 	h.Write([] byte(name + value + timestamp))
