@@ -8,4 +8,5 @@ import (
 
 func init() {
 	beego.Router("/", &web_controllers.MainController{})
+	beego.Router("/item/list", &web_controllers.ItemListCtroller{})
 }

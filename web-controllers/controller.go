@@ -9,9 +9,19 @@ type MainController struct {
 }
 
 func (this *MainController) Get() {
-	this.Data["Website"] = "beego.me"
-	this.Data["Email"] = "astaxie@gmail.com"
 	this.TplName = "index.html"
 	this.Layout = "layout/layout.html"
+	this.Render()
+}
+
+type ItemListCtroller struct {
+	beego.Controller
+}
+
+func (this *ItemListCtroller) Get()  {
+	this.TplName = "itemlist/items.html"
+	this.Layout = "layout/layout.html"
+	this.LayoutSections = make(map[string]string)
+	this.LayoutSections["JsFileExtend"] = "itemlist/js.tpl"
 	this.Render()
 }

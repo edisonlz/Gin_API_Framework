@@ -12,6 +12,5 @@ func main() {
 	beego.SetViewsPath("/Users/yinxing/godir/go/src/Gin_API_Framework/web-controllers/templates")
 	fmt.Println(beego.AppConfig.String("StaticDir"))
 	fmt.Println(beego.AppConfig.String("ViewsPath"))
-
 	beego.Run()
 }
