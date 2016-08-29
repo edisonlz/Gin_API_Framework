@@ -49,7 +49,7 @@ func (this *ItemPositionCtroller) Post()  {
 			itemObj.Seq = i
 			if num, err := o.Update(&itemObj); err == nil {
 				fmt.Println(num)
-			}
+			} 
 		}
 	}
 
