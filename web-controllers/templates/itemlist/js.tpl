@@ -1,4 +1,8 @@
+<script src="/static/js/jquery.form.js"></script>
+<script src="/static/toast_message/jquery.toastmessage.js"></script>
+
 <script type="text/javascript">
+
     $(document).ready(function () {
         /* list table sortbale */
         $("#sortable").sortable({
@@ -9,21 +13,20 @@
             stop: function(event, ui) {
                 console.log("Start position: " + ui.item.startPos);
                 console.log("New position: " + ui.item.index());
-//                if(ui.item.startPos!=ui.item.index())
-//                    $("#save_position_btn").removeClass("disabled");
+                if(ui.item.startPos!=ui.item.index())
+                    $("#save_position_btn").removeClass("disabled");
             }
-
         });
         /* save positoin */
         $("#save_position_btn").click(function(){
 
             var item_ids = collect_module_ids_with_order();
-            console.log(item_ids)
+//            console.log(item_ids);
             if(item_ids==''){
                 alert('没有要排序的内容');
                 return false;
             }
-            var $btn = $(this).button('loading');
+//            var $btn = $(this).button('loading');
             $("#gift_ids").val(item_ids);
 
             $('#form_positoin').submit();

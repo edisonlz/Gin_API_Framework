@@ -1,0 +1,31 @@
+<div class="col-xs-6 col-sm-9">
+<div class="row">
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+        <li><a href="">Item管理</a></li>
+        <li class="active">修改Item</a></li>
+    </ol>
+</div>
+
+<form class="form-horizontal" method="post" id="mainPageContent" action="/item/edit" enctype="multipart/form-data">
+    {{if .Item}}
+    <input type="hidden" name="itemId" value="{{.Item.Id}}">
+    {{end}}
+    <div class="form-group has-success">
+        <label  class="col-sm-2 control-label">礼物名称</label>
+
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Item名称"
+                   {{if .Item}}value="{{.Item.Name}} "{{end}}>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-info">确定</button>
+        </div>
+    </div>
+</form>
+</div>
+
+

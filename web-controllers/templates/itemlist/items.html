@@ -11,7 +11,7 @@
                 class="btn btn-info" autocomplete="off">
             保存顺序
         </button>
-        <a class="btn btn-success" href="/create">添加</a>
+        <a class="btn btn-success" href="/item/edit">添加</a>
     </div>
 
     <table class="table table-striped table-hover table-bordered ">
@@ -22,43 +22,24 @@
         </thead>
 
         <tbody id="sortable">
-        <tr class="sort-item"  id="module_1" value="1">
-            <td style="text-align: center;width: 150px;"><span class="label label-default" >1</span></td>
+        <!--{{range $index, $elem := .Pages}}-->
+        <!--{{$index}} - {{$elem.Num}} - {{.Num}} of {{$.Total}}-->
+        <!--{{end}}-->
+        {{range $index, $item := .Items}}
+        <tr class="sort-item"  id="module_{{$item.Id}}" value="{{$item.Id}}">
+            <td style="text-align: center;width: 150px;"><span class="label label-default" >{{$item.Id}}</span></td>
 
-            <td style="text-align: center;width: 240px;" ><strong>测试item1</strong></td>
+            <td style="text-align: center;width: 240px;" ><strong>{{$item.Name}}</strong></td>
             <td style="text-align: center;width: 150px;">
-                <a href="/customer/gift/edit?gift_id=" class="label label-info" title="修改" >
+                <a href="/item/edit?itemId={{$item.Id}}" class="label label-info" title="修改" >
                     修改</a>
             </td>
         </tr>
-        <tr class="sort-item"  id="module_2" value="2">
-            <td style="text-align: center;width: 150px;"><span class="label label-default" >1</span></td>
+        {{end}}
 
-            <td style="text-align: center;width: 240px;" ><strong>测试item2</strong></td>
-            <td style="text-align: center;width: 150px;">
-                <a href="/customer/gift/edit?gift_id=" class="label label-info" title="修改" >
-                    修改</a>
-            </td>
-        </tr>
-        <tr class="sort-item"  id="module_3" value="3">
-            <td style="text-align: center;width: 150px;"><span class="label label-default" >1</span></td>
-            <td style="text-align: center;width: 240px;" ><strong>测试item3</strong></td>
-            <td style="text-align: center;width: 150px;">
-                <a href="/customer/gift/edit?gift_id=" class="label label-info" title="修改" >
-                    修改</a>
-            </td>
-        </tr>
-        <tr class="sort-item"  id="module_4" value="4">
-            <td style="text-align: center;width: 150px;"><span class="label label-default" >1</span></td>
-            <td style="text-align: center;width: 240px;" ><strong>测试item4</strong></td>
-            <td style="text-align: center;width: 150px;">
-                <a href="/customer/gift/edit?gift_id=" class="label label-info" title="修改" >
-                    修改</a>
-            </td>
-        </tr>
         </tbody>
     </table>
-    <form method="post" action="/customer/gift/position" id="form_positoin" name="form_positoin">
+    <form method="post" action="/item/pos" id="form_positoin" name="form_positoin">
         <input type="hidden" name="gift_ids" id="gift_ids"/>
     </form>
 

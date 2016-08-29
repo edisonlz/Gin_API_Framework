@@ -28,7 +28,7 @@ func (item *Item) CreateItem(
 func ItemList() (item []Item) {
 
 	o := orm.NewOrm()
-	qs := o.QueryTable("user")
+	qs := o.QueryTable("item")
 
 	var items []Item
 	cnt, err :=  qs.Filter(
