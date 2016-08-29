@@ -24,6 +24,35 @@ func (item *Item) CreateItem(
 	return true
 }
 
+func UpdateById(id int,filed map[string] interface{})bool{
+	o := orm.NewOrm()
+	_, err := o.QueryTable(
+		"item").Filter(
+		"Id", id).Update(
+		filed)
+	if err == nil{
+		return true
+	}
+	return false
+}
+
+func QueryById(id int) (Item) {
+	o := orm.NewOrm()
+
+	itemObj := Item{Id: id}
+	err := o.Read(&itemObj)
+
+	if err == orm.ErrNoRows {
+		fmt.Println("查询不到")
+	} else if err == orm.ErrMissPK {
+		fmt.Println("找不到主键")
+	} else {
+		fmt.Println(itemObj.Id, itemObj.Name)
+	}
+
+	return itemObj
+}
+
 
 func ItemList() (item []Item) {
 

@@ -3,7 +3,7 @@
     <div class="row" style="margin-left: 2px;margin-right: 2px">
         <ol class="breadcrumb">
             <li><a href="/">首页</a></li>
-            <li class="active"><a>礼物管理</a></li>
+            <li class="active"><a>Item管理</a></li>
         </ol>
     </div>
     <div class="row pull-right" style="margin-bottom: 20px;margin-right: 5px">
@@ -22,9 +22,6 @@
         </thead>
 
         <tbody id="sortable">
-        <!--{{range $index, $elem := .Pages}}-->
-        <!--{{$index}} - {{$elem.Num}} - {{.Num}} of {{$.Total}}-->
-        <!--{{end}}-->
         {{range $index, $item := .Items}}
         <tr class="sort-item"  id="module_{{$item.Id}}" value="{{$item.Id}}">
             <td style="text-align: center;width: 150px;"><span class="label label-default" >{{$item.Id}}</span></td>
