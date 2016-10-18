@@ -1,0 +1,35 @@
+#sortable {
+    list-style: none;
+}
+#sortable .vid-item {
+    margin-top:15px;
+    padding:5px;
+    float:left;
+    background-color: #F8F8F8;
+}
+.vid-delete {
+    float:right;
+}
+.vid-item-img {
+    width:97px;
+    height:55px;
+}
+.vid-field {
+    float:left;
+    margin-right:5px;
+}
+.vid-fields {
+    overflow: none;
+}
+
+.vid-select {
+    width:95px;
+}
+
+.vid-img-field {
+    clear:left;
+}
+.img_div {
+    clear:both;
+    /*width:120px;*/
+}

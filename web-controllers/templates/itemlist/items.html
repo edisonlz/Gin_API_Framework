@@ -1,0 +1,45 @@
+
+<div class="col-xs-6 col-sm-9">
+    <div class="row" style="margin-left: 2px;margin-right: 2px">
+        <ol class="breadcrumb">
+            <li><a href="/">首页</a></li>
+            <li class="active"><a>Item管理</a></li>
+        </ol>
+    </div>
+    <div class="row pull-right" style="margin-bottom: 20px;margin-right: 5px">
+        <button id="save_position_btn" type="button"
+                class="btn btn-info" autocomplete="off">
+            保存顺序
+        </button>
+        <a class="btn btn-success" href="/item/edit">添加</a>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered ">
+        <thead>
+        <th style="text-align: center">Item ID</th>
+        <th style="text-align: center">Item 名称</th>
+        <th style="text-align: center">操作</th>
+        </thead>
+
+        <tbody id="sortable">
+        {{range $index, $item := .Items}}
+        <tr class="sort-item"  id="module_{{$item.Id}}" value="{{$item.Id}}">
+            <td style="text-align: center;width: 150px;"><span class="label label-default" >{{$item.Id}}</span></td>
+
+            <td style="text-align: center;width: 240px;" ><strong>{{$item.Name}}</strong></td>
+            <td style="text-align: center;width: 150px;">
+                <a href="/item/edit?itemId={{$item.Id}}" class="label label-info" title="修改" >
+                    修改</a>
+            </td>
+        </tr>
+        {{end}}
+
+        </tbody>
+    </table>
+    <form method="post" action="/item/pos" id="form_positoin" name="form_positoin">
+        <input type="hidden" name="gift_ids" id="gift_ids"/>
+    </form>
+
+
+</div><!--/.sidebar-offcanvas-->
+

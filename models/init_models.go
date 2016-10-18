@@ -6,6 +6,7 @@ import  (
     "github.com/astaxie/beego/orm"
     _ "github.com/go-sql-driver/mysql" // import your used driver
     "Gin_API_Framework/models/user"
+    "Gin_API_Framework/models/item"
     "fmt"
 )
     
@@ -26,8 +27,8 @@ func init() {
     // register model
     orm.RegisterModel(new(user.User))
     orm.RegisterModel(new(user.Post))
-
-    mysql_config := "root:@/go_platform?charset=utf8"
+    orm.RegisterModel(new(item.Item))
+    mysql_config := "root:donghao654321@/go_platform?charset=utf8"
     // set default database
     orm.RegisterDataBase("default", "mysql", mysql_config)
     //set db params
