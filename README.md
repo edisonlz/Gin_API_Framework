@@ -192,6 +192,18 @@ func main(){
 
 ```
 
+###Profile
+```
+API goroutine monitor profile
+https://github.com/DeanThompson/ginpprof
+```
+
+### API 响应时间
+#####默认情况都是微秒
+![Alt text](./static/run_api.png)
+
+run_api
+
 ## Web 后台使用beego框架构建
 #####服务展示
 ![Alt text](./static/hello_web.png)
