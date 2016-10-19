@@ -22,12 +22,14 @@ func main() {
     static_path := path.Join(curpath, "/", "static")
     template_path := path.Join(curpath, "/web-controllers/templates")
 
+    
 	beego.SetStaticPath("/static",static_path)
 	beego.SetViewsPath(template_path)
 
 
+    fmt.Println(beego.AppConfig.String("HttpPort"))
 	fmt.Println("[static path]" , static_path)
 	fmt.Println("[template path]" , template_path)
 
-	beego.Run()
+	beego.Run(":8000")
 }

@@ -183,4 +183,12 @@ func main(){
 
 ```
 
+## Web 后台使用beego框架构建
+#####服务展示
+![Alt text](./static/hello_web.png)
+
+#####启动服务
+$ go run web_main.go
+
+
 #####作者：（优酷）hep
