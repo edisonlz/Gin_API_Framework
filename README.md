@@ -190,10 +190,11 @@ func main(){
 #####启动服务
 $ go run web_main.go
 
-#####代码结构
+#####目录框架结构
 - web-controllers [controller代码]
 - web-routers [http 路由配置]
 - conf [beego config file]
+- 其他目录例如models 为公用
 
 #####View Controller 构建
 ``` go
