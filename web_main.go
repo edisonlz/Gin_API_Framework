@@ -5,12 +5,29 @@ import (
 	_ "Gin_API_Framework/web-routers"
 	"github.com/astaxie/beego"
 	"fmt"
+    "path"
+    "runtime"
 )
 
+
+func callerSourcePath() string {
+    _, callerPath, _, _ := runtime.Caller(1)
+    return path.Dir(callerPath)
+}
+
+
 func main() {
-	beego.SetStaticPath("/static","/Users/yinxing/godir/go/src/Gin_API_Framework/static")
-	beego.SetViewsPath("/Users/yinxing/godir/go/src/Gin_API_Framework/web-controllers/templates")
-	fmt.Println(beego.AppConfig.String("StaticDir"))
-	fmt.Println(beego.AppConfig.String("ViewsPath"))
+
+    curpath := callerSourcePath()
+    static_path := path.Join(curpath, "/", "static")
+    template_path := path.Join(curpath, "/web-controllers/templates")
+
+	beego.SetStaticPath("/static",static_path)
+	beego.SetViewsPath(template_path)
+
+
+	fmt.Println("[static path]" , static_path)
+	fmt.Println("[template path]" , template_path)
+
 	beego.Run()
 }
