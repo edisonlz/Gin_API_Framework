@@ -36,10 +36,11 @@
 
 ###框架结构
 - API
--- controllers ： API  接口代码
--- routers：API路由配置代码
--- middleware：中间件代码
--- docs: 生成api文档代码
+###API 目录结构
+- controllers ： API  接口代码
+- routers：API路由配置代码
+- middleware：中间件代码
+- docs: 生成api文档代码
 
 - utils：常用方法代码
 - vendor：godep save 生成依赖代码
@@ -48,9 +49,10 @@
 - static：静态文件代码
 -
 - Web
--- web-controllers [controller代码]
--- web-routers [http 路由配置]
--- conf [beego config file]
+###Web 目录结构
+- web-controllers [controller代码]
+- web-routers [http 路由配置]
+- conf [beego config file]
 
 
 ### 代码块
