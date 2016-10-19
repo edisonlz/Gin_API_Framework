@@ -190,5 +190,25 @@ func main(){
 #####启动服务
 $ go run web_main.go
 
+#####代码结构
+- web-controllers [controller代码]
+- web-routers [http 路由配置]
+- conf [beego config file]
+
+#####View Controller 构建
+``` go
+
+type MainController struct {
+    beego.Controller
+}
+
+func (this *MainController) Get() {
+    this.TplName = "index.html"
+    this.Layout = "layout/layout.html"
+    this.Render()
+}
+
+```
+
 
 #####作者：（优酷）hep
