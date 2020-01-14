@@ -10,6 +10,7 @@ import (
 func main() {
     fmt.Println("starting......")
     orm.RunCommand()
+    //orm.RunSyncdb("default", false, true)
     fmt.Println("ended......")
 }
 

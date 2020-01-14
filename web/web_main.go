@@ -19,7 +19,7 @@ func callerSourcePath() string {
 func main() {
 
     curpath := callerSourcePath()
-    static_path := path.Join(curpath, "/", "static")
+    static_path := path.Join(curpath,"..", "/", "static")
     template_path := path.Join(curpath, "/web-controllers/templates")
 
     beego.LoadAppConfig("ini", path.Join(curpath,"..", "/conf/app.conf"))
