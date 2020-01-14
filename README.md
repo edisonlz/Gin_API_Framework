@@ -175,6 +175,7 @@ go http://127.0.0.1:8080/debug/pprof/
 
 
 ### go Async Queue Message by Redis
+目录: Gin_API_Framework/background
 ``` go
 package main
 
