@@ -17,7 +17,7 @@
 
 
 ## 环境配置
-#####部署服务
+##### 部署服务
 - go version go1.13.6 ([golang.org](https://golang.google.cn/dl/)) 下载当前版本或最新版本
 - godep ( https://github.com/tools/godep)
 - $GOPATH 设置 
@@ -54,26 +54,26 @@ Gin_API_Framework back              github.com        golang.org        gopkg.in
 ##### 同步数据库模型
     $ go run orm_sync.go orm syncdb
 
-#####执行服务
+##### 执行服务
     $ go run main.go
     $ open http://127.0.0.1:8080/doc
 ![Alt text](./static/hello.png)
 
-###框架结构
-###API 目录结构
+### 框架结构
+### API 目录结构
 - controllers ： API  接口代码
 - routers：API路由配置代码
 - middleware：中间件代码
 - docs: 生成api文档代码
 
-###公共目录
+### 公共目录
 - utils：常用方法代码
 - vendor：godep save 生成依赖代码
 - background：后端定时/异步服务代码
 - models：ORM数据模型代码
 - static：静态文件代码
 
-###Web 目录结构
+### Web 目录结构
 - web-controllers [controller代码]
 - web-routers [http 路由配置]
 - conf [beego config file]
@@ -225,7 +225,7 @@ https://github.com/DeanThompson/ginpprof
 ```
 
 ### API 响应时间
-#####默认情况都是微秒
+##### 默认情况都是微秒
 ![Alt text](./static/run_api.png)
 
 run_api
