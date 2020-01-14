@@ -112,6 +112,18 @@ func UserQueryByIdHandler(c *gin.Context) {
 
 ```
 
+### API文档生成规则
+```go
+// @Title User Query By ID
+// @API_GROUP User
+// @Description 查询用户接口通过用户ID
+// @Success 200 {object} 
+// @Param   uid     query   string false       "user id"
+// @Failure 400 no enough input
+// @Failure 500 get  common error
+// @router /user/query [get]
+```
+
 
 
 ### ORM层
