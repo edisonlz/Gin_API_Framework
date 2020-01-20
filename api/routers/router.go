@@ -23,12 +23,15 @@ import (
     _"Gin_API_Framework/api/middleware/contrib/commonlog"
     "Gin_API_Framework/api/middleware/contrib/sessions"
 
+  
     "net/http"
     "path"
     "runtime"
     "fmt"
     "time"
 )
+
+
 
 func callerSourcePath() string {
     _, callerPath, _, _ := runtime.Caller(1)
@@ -42,13 +45,15 @@ func recoveryHandler(c *gin.Context, err interface{}) {
     })
 }
 
+
 func InitRouter() http.Handler {
 
     curpath := callerSourcePath()
-    temp_path := path.Join(curpath, "..", "controllers/templates/")
+
+    temp_path := path.Join(curpath,"..",  "controllers/templates/")
     fmt.Println("[Register Template Path]",temp_path)
 
-    static_path := path.Join(curpath, "..", "static","docs")
+    static_path := path.Join(curpath, "..","..","/static","/docs")
     fmt.Println("[Register Static Path]",static_path)
 
     inmem_store := cache.NewInMemoryStore(time.Second)
