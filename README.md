@@ -3,6 +3,13 @@
 @(示例笔记本)[马克飞象|帮助|Markdown]
 
 **GIN API Framework**是一款专为Go Gin 框架打造的API Framework，通过精心的设计与技术实现，集成了大部分稳定开发组件，memcache consistance Hash，redis，nsq，api doc ，mysql 等。特点概述：
+
+
+如果您考虑采用**微服务框架** 请参见 [Micro_API_Framework](https://github.com/edisonlz/Micro_API_Framework)
+
+
+
+
  
 - **功能丰富** ：支持大部分服务器组件，支持API Doc；
 - **得心应手** ：简单的实例，非常容易上手；
