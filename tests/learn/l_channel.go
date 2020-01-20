@@ -1,5 +1,12 @@
 package main
 
+//go-in-practice.pdf
+//https://books.studygolang.com/gobyexample/
+//https://github.com/Unknwon/the-way-to-go_ZH_CN/blob/master/eBook/directory.md
+//go 中文
+//https://go.fdos.me/07.2.html
+
+
 import ("fmt"
         "time")
 
@@ -64,7 +71,8 @@ func fab_main(){
 /* select route */
 
 //Select
-//我们上面介绍的都是只有一个channel的情况，那么如果存在多个channel的时候，我们该如何操作呢，Go里面提供了一个关键字select，通过select可以监听channel上的数据流动。
+//我们上面介绍的都是只有一个channel的情况，那么如果存在多个channel的时候，我们该如何操作呢
+//，Go里面提供了一个关键字select，通过select可以监听channel上的数据流动。
 //select默认是阻塞的，只有当监听的channel中有发送或接收可以进行时才会运行，当多个channel都准备好的时候，select是随机的选择一个执行的。
 
 func select_fibonacci(c, quit chan int) {
